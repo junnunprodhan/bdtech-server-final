@@ -90,6 +90,7 @@ export const login = async (
 
   try {
     const user = await User.findOne({ email });
+
     if (!user) {
       return res.status(404).json({ message: "User not found" });
     }
@@ -100,10 +101,11 @@ export const login = async (
     }
 
     const token = jwt.sign(
-      { id: user._id, role: user.role },
+      { id: user._id, name: user.name, image: user.image, role: user.role },
       process.env.JWT_SECRET || "secret",
       { expiresIn: "1h" }
     );
+    console.log("🚀 ~ token:", token);
 
     return res.status(200).json({ message: "Login successful", token });
   } catch (error) {
