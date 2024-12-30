@@ -4,7 +4,7 @@ export interface IPost extends Document {
   title: string;
   username: string;
   image?: string;
-  categories: string;
+  category: string;
   userImage?: string;
   description: string;
   likes: number;

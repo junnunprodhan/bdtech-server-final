@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import Post, { IPost } from "../models/post.model";
 
 // Create a new post
+
 export const createPost = async (req: Request, res: Response) => {
   console.log("reqbody:", req.body);
   try {
@@ -18,6 +19,7 @@ export const createPost = async (req: Request, res: Response) => {
       likes: 0,
       comments: [],
     });
+    console.log("🚀 ~ createPost ~ description:", description);
 
     const savedPost = await newPost.save();
     console.log("🚀 ~ createPost ~ savedPost:", savedPost);
@@ -40,7 +42,7 @@ export const getPosts = async (_req: Request, res: Response) => {
 };
 
 // Get a single post by ID
-export const getPostById = async (req: Request, res: Response) => {
+export const getPostById = async (req: any, res: any) => {
   try {
     const post = await Post.findById(req.params.id);
     if (!post) return res.status(404).json({ error: "Post not found" });

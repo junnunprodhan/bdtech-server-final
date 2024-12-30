@@ -16,7 +16,7 @@ router.post("/", createPost);
 router.get("/", getPosts);
 
 // // GET: Fetch a single post by ID
-// router.get("/:id", getPostById);
+router.get("/:id", getPostById);
 
 // // PUT: Update a post by ID
 // router.put("/:id", updatePost);
