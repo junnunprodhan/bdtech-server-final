@@ -21,7 +21,7 @@ router.get("/", getPosts);
 // // PUT: Update a post by ID
 // router.put("/:id", updatePost);
 
-// // DELETE: Delete a post by ID
-// router.delete("/:id", deletePost);
+// DELETE: Delete a post by ID
+router.delete("/:id", deletePost);
 
 export default router;

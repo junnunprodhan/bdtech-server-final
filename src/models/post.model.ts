@@ -4,6 +4,7 @@ export interface IPost extends Document {
   title: string;
   username: string;
   image?: string;
+  categories: string;
   userImage?: string;
   description: string;
   likes: number;
@@ -15,7 +16,8 @@ const PostSchema: Schema = new Schema(
     title: { type: String, required: true },
     username: { type: String, required: true },
     image: { type: String, required: true },
-    userImage: { type: String }, // Optional field
+    userImage: { type: String },
+    category: { type: String, required: true },
     description: { type: String, required: true },
     likes: { type: Number, default: 0 },
     comments: [

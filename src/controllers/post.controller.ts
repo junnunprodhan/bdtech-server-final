@@ -5,12 +5,14 @@ import Post, { IPost } from "../models/post.model";
 export const createPost = async (req: Request, res: Response) => {
   console.log("reqbody:", req.body);
   try {
-    const { title, username, userImage, description, image } = req.body;
+    const { title, username, userImage, description, image, category } =
+      req.body;
 
     const newPost: IPost = new Post({
       title,
       username,
       image,
+      category,
       userImage,
       description,
       likes: 0,
@@ -62,12 +64,13 @@ export const updatePost = async (req: Request, res: Response) => {
 };
 
 // Delete a post
-export const deletePost = async (req: Request, res: Response) => {
+export const deletePost = async (req: any, res: any) => {
   try {
     const deletedPost = await Post.findByIdAndDelete(req.params.id);
     if (!deletedPost) return res.status(404).json({ error: "Post not found" });
     res.status(200).json({ message: "Post deleted successfully" });
   } catch (error) {
+    console.log("🚀 ~ deletePost ~ error:", error);
     res.status(500).json({ error: "Failed to delete post" });
   }
 };
